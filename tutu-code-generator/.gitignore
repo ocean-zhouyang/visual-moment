@@ -1,0 +1,9 @@
+/target/
+/main.pid
+*.iml
+/.apt_generated/
+.classpath
+.project
+.settings/
+.factorypath
+.idea/

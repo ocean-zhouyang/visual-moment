@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vcg
+  datasource:
+    url: jdbc:mysql://152.136.160.237:3306/hiedgemind2?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: !@#qweASD123
+    hikari:
+      maximum-pool-size: 200
+      minimum-idle: 2
+      idle-timeout: 600000  #10分钟
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+    default-property-inclusion: non_null
+mybatis:
+  mapper-locations:
+    - classpath:com/vcg/mapper/*ExampleMapper.xml
+  type-aliases-package: com.vcg.model
+
+logging:
+  level:
+    root: info
+    com.vcg.model: debug
+
+com:
+  vcg:
+    swagger:
+      enabled: true
+      title: 图兔后台服务接口
+      description: 图兔后台服务接口
+      version: 1.0.0
+      packages:
+        - com.vcg
+      serverList:
+        - /
+        - /productservice
+      schemes:
+        - securityType: apiKey
+      securityName: Authorization
+      securityIn: header
+      showName: tokens
