@@ -1,4 +1,4 @@
-package com.jackson0714.passjava.member.feign;
+package com.sjsk.passjava.member.feign;
 
 import com.sjsk.passjava.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;

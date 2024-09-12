@@ -1,5 +1,7 @@
-package com.jackson0714.passjava.member.service.impl;
+package com.sjsk.passjava.member.service.impl;
 
+import com.sjsk.passjava.member.entity.MemberEntity;
+import com.sjsk.passjava.member.service.MemberService;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sjsk.passjava.common.utils.PageUtils;
 import com.sjsk.passjava.common.utils.Query;
 
-import com.jackson0714.passjava.member.dao.MemberDao;
-import com.jackson0714.passjava.member.entity.MemberEntity;
-import com.jackson0714.passjava.member.service.MemberService;
+import com.sjsk.passjava.member.dao.MemberDao;
 
 
 @Service("memberService")

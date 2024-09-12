@@ -1,8 +1,8 @@
-package com.jackson0714.passjava.member.service;
+package com.sjsk.passjava.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sjsk.passjava.common.utils.PageUtils;
-import com.jackson0714.passjava.member.entity.GrowthChangeHistoryEntity;
+import com.sjsk.passjava.member.entity.GrowthChangeHistoryEntity;
 
 import java.util.Map;
 

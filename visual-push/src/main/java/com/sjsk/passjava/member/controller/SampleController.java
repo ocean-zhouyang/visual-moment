@@ -1,8 +1,8 @@
-package com.jackson0714.passjava.member.controller;
+package com.sjsk.passjava.member.controller;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.sjsk.passjava.common.utils.R;
-import com.jackson0714.passjava.member.service.MemberService;
+import com.sjsk.passjava.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

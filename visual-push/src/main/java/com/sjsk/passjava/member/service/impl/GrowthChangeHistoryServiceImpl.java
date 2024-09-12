@@ -1,5 +1,7 @@
-package com.jackson0714.passjava.member.service.impl;
+package com.sjsk.passjava.member.service.impl;
 
+import com.sjsk.passjava.member.entity.GrowthChangeHistoryEntity;
+import com.sjsk.passjava.member.service.GrowthChangeHistoryService;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -8,9 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sjsk.passjava.common.utils.PageUtils;
 import com.sjsk.passjava.common.utils.Query;
 
-import com.jackson0714.passjava.member.dao.GrowthChangeHistoryDao;
-import com.jackson0714.passjava.member.entity.GrowthChangeHistoryEntity;
-import com.jackson0714.passjava.member.service.GrowthChangeHistoryService;
+import com.sjsk.passjava.member.dao.GrowthChangeHistoryDao;
 
 
 @Service("growthChangeHistoryService")

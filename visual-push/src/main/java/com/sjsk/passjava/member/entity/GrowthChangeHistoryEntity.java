@@ -1,4 +1,4 @@
-package com.jackson0714.passjava.member.entity;
+package com.sjsk.passjava.member.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

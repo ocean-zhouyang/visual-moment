@@ -1,6 +1,6 @@
-package com.jackson0714.passjava.member.dao;
+package com.sjsk.passjava.member.dao;
 
-import com.jackson0714.passjava.member.entity.MemberEntity;
+import com.sjsk.passjava.member.entity.MemberEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

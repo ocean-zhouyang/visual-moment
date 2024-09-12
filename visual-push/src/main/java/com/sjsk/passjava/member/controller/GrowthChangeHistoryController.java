@@ -1,8 +1,10 @@
-package com.jackson0714.passjava.member.controller;
+package com.sjsk.passjava.member.controller;
 
 import java.util.Arrays;
 import java.util.Map;
 
+import com.sjsk.passjava.member.entity.GrowthChangeHistoryEntity;
+import com.sjsk.passjava.member.service.GrowthChangeHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jackson0714.passjava.member.entity.GrowthChangeHistoryEntity;
-import com.jackson0714.passjava.member.service.GrowthChangeHistoryService;
 import com.sjsk.passjava.common.utils.PageUtils;
 import com.sjsk.passjava.common.utils.R;
 

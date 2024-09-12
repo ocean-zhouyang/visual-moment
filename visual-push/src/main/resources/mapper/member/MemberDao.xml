@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.jackson0714.passjava.member.dao.MemberDao">
+<mapper namespace="com.sjsk.passjava.member.dao.MemberDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.jackson0714.passjava.member.entity.MemberEntity" id="memberMap">
+    <resultMap type="com.sjsk.passjava.member.entity.MemberEntity" id="memberMap">
         <result property="id" column="id"/>
         <result property="miniOpenid" column="mini_openid"/>
         <result property="mpOpenid" column="mp_openid"/>
@@ -39,7 +39,7 @@
         ums_member.`email`
     </sql>
 
-    <select id="getMemberByUserId" resultType="com.jackson0714.passjava.member.entity.MemberEntity">
+    <select id="getMemberByUserId" resultType="com.sjsk.passjava.member.entity.MemberEntity">
         SELECT
         <include refid="memberSql"/>
         FROM ums_member as ums_member

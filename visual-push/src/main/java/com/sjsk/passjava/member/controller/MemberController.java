@@ -1,13 +1,13 @@
-package com.jackson0714.passjava.member.controller;
+package com.sjsk.passjava.member.controller;
 
 import com.sjsk.passjava.common.utils.PageUtils;
 import com.sjsk.passjava.common.utils.R;
 import com.sjsk.passjava.common.utils.SecurityUtils;
 import com.sjsk.passjava.common.utils.ServletUtils;
 import com.jackson0714.passjava.jwt.utils.PassJavaJwtTokenUtil;
-import com.jackson0714.passjava.member.entity.MemberEntity;
-import com.jackson0714.passjava.member.feign.StudyTimeFeignService;
-import com.jackson0714.passjava.member.service.MemberService;
+import com.sjsk.passjava.member.entity.MemberEntity;
+import com.sjsk.passjava.member.feign.StudyTimeFeignService;
+import com.sjsk.passjava.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
