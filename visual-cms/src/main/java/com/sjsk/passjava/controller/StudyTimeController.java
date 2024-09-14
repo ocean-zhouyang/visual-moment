@@ -6,11 +6,7 @@ import java.util.Map;
 import com.sjsk.passjava.model.StudyTimeEntity;
 import com.sjsk.passjava.service.StudyTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.sjsk.passjava.common.utils.PageUtils;
 import com.sjsk.passjava.common.utils.R;
@@ -30,7 +26,7 @@ public class StudyTimeController {
     @Autowired
     private StudyTimeService studyTimeService;
 
-    @RequestMapping("/member/list/test/{id}")
+    @GetMapping("/member/list/test/{id}")
     public R memberStudyTimeTest(@PathVariable("id") Long id) {
         StudyTimeEntity studyTimeEntity = new StudyTimeEntity();
         studyTimeEntity.setTotalTime(100); // 学习时长：100分钟
@@ -42,7 +38,7 @@ public class StudyTimeController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @PostMapping("/list")
     //@RequiresPermissions("study:studytime:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = studyTimeService.queryPage(params);
@@ -54,7 +50,7 @@ public class StudyTimeController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     //@RequiresPermissions("study:studytime:info")
     public R info(@PathVariable("id") Long id){
 		StudyTimeEntity studyTime = studyTimeService.getById(id);
@@ -65,7 +61,7 @@ public class StudyTimeController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     //@RequiresPermissions("study:studytime:save")
     public R save(@RequestBody StudyTimeEntity studyTime){
 		studyTimeService.save(studyTime);
@@ -76,7 +72,7 @@ public class StudyTimeController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     //@RequiresPermissions("study:studytime:update")
     public R update(@RequestBody StudyTimeEntity studyTime){
 		studyTimeService.updateById(studyTime);
@@ -87,7 +83,7 @@ public class StudyTimeController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     //@RequiresPermissions("study:studytime:delete")
     public R delete(@RequestBody Long[] ids){
 		studyTimeService.removeByIds(Arrays.asList(ids));

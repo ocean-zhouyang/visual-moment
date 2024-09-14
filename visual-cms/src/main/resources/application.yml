@@ -6,6 +6,13 @@ spring:
       password: 123456
   application:
     name: visual-cms
+
+  redis:
+    database: 0
+    host: 192.168.65.128
+    port: 6379
+    password: 123456
+
   kafka:
     bootstrap-servers: 192.168.65.128:9091
     producer:
@@ -16,6 +23,7 @@ spring:
       group-id: kafka-demo-kafka-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
@@ -24,3 +32,6 @@ mybatis-plus:
 
 server:
   port: 12200
+
+es:
+  host: http://192.168.65.128:9200

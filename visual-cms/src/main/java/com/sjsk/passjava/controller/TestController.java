@@ -17,6 +17,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,9 @@ import java.util.List;
 @RestController
 @RequestMapping("test")
 public class TestController {
+
+    @Value("${es.host}")
+    private String esHost;
 
     @Autowired
     private StudentService studentService;
@@ -53,7 +57,7 @@ public class TestController {
     @GetMapping("esTest")
     public Object esTest() {
         String MAPPING_TEMPLATE = "{\"mappings\":{\"properties\":{\"id\":{\"type\":\"long\"},\"resId\":{\"type\":\"keyword\"},\"title\":{\"type\":\"text\",\"analyzer\":\"ik_max_word\"}}}}";
-        RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(HttpHost.create("http://192.168.65.128:9200")));
+        RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(HttpHost.create(esHost)));
         CreateIndexRequest request = new CreateIndexRequest("res_image");
         request.source(MAPPING_TEMPLATE, XContentType.JSON);
         try {
@@ -76,7 +80,7 @@ public class TestController {
             esStudents.add(esStudent);
         });
 
-        RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(HttpHost.create("http://192.168.65.128:9200")));
+        RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(HttpHost.create(esHost)));
         esStudents.stream().forEach(esStudent -> {
             IndexRequest request = new IndexRequest("student").id(esStudent.getId().toString());
             request.source(JSON.toJSONString(esStudent), XContentType.JSON);
