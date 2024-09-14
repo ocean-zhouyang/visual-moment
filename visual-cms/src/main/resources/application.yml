@@ -6,6 +6,16 @@ spring:
       password: 123456
   application:
     name: visual-cms
+  kafka:
+    bootstrap-servers: 192.168.65.128:9091
+    producer:
+      retries: 0
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: kafka-demo-kafka-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
