@@ -1,9 +1,6 @@
 package com.sjsk.passjava.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
@@ -14,25 +11,20 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 @Accessors(chain = true)
-public class UserDto implements Serializable {
+public class UserLoginDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 用户名
      */
-    @NotNull(message = "用户名不能为空")
-    private String userName;
+    @NotNull(message = "userId不能为空")
+    private String userId;
 
     /**
      * 密码
      */
     @NotNull(message = "密码不能为空")
     private String password;
-
-    /**
-     * 电话
-     */
-    private String mobile;
 
 }

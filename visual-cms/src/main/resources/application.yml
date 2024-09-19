@@ -1,20 +1,25 @@
+server:
+  port: 12200
+
+vm-host: 192.168.65.128
+
 spring:
   datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/mytest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-      username: root
-      password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mytest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
   application:
     name: visual-cms
 
   redis:
     database: 0
-    host: 192.168.65.128
+    host: ${vm-host}
     port: 6379
     password: 123456
 
   kafka:
-    bootstrap-servers: 192.168.65.128:9091
+    bootstrap-servers: ${vm-host}:9091
     producer:
       retries: 0
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -24,14 +29,26 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
+  elasticsearch:
+    rest:
+      uris: http://${vm-host}:9200
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
 
-server:
-  port: 12200
-
 es:
-  host: http://192.168.65.128:9200
+  host: http://${vm-host}:9200
+
+ocean:
+  jwt:
+    enabled: true   # 是否开启JWT登录认证功能
+    secret: ocean  # JWT 私钥，用于校验JWT令牌的合法性
+    expiration: 3600000 # JWT 令牌的有效期，用于校验JWT令牌的合法性，一个小时
+    header: Authorization # HTTP 请求的 Header 名称，该 Header作为参数传递 JWT 令牌
+    userParamName: userId  # 用户登录认证用户名参数名称
+    pwdParamName: password  # 用户登录认证密码参数名称
+    useDefaultController: true # 是否使用默认的JwtAuthController
+    skipValidUrl: /auth/login,/renren-fast/captcha.jpg,/renren-fast/sys/login

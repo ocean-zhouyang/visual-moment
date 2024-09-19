@@ -5,6 +5,7 @@ import com.sjsk.passjava.common.ResponseCodeEnum;
 import com.sjsk.passjava.common.utils.R;
 import com.sjsk.passjava.config.JwtProperties;
 import com.sjsk.passjava.dto.UserDto;
+import com.sjsk.passjava.dto.UserLoginDto;
 import com.sjsk.passjava.model.User;
 import com.sjsk.passjava.service.UserService;
 import com.sjsk.passjava.utils.JwtTokenUtil;
@@ -14,6 +15,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +49,7 @@ public class UserController {
 
     @ApiOperation(value = "注册接口", notes = "注册接口说明")
     @PostMapping("regist")
-    public Object regist(@RequestBody UserDto userDto) {
+    public Object regist(@Validated @RequestBody UserDto userDto) {
 
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
@@ -61,10 +63,10 @@ public class UserController {
 
     @ApiOperation(value = "登录接口", notes = "登录接口说明")
     @PostMapping("/login")
-    public Object login(@RequestBody Map<String, String> map) {
+    public Object login(@Validated @RequestBody UserLoginDto loginDto) {
         // 从请求体中获取用户名密码
-        String userId = map.get(jwtProperties.getUserParamName());
-        String password = map.get(jwtProperties.getPwdParamName());
+        String userId = loginDto.getUserId();
+        String password = loginDto.getPassword();
 
         // 如果用户名和密码为空
         if (!StringUtils.hasLength(userId) || !StringUtils.hasLength(password)) {

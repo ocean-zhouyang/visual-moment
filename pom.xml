@@ -15,6 +15,5 @@
         <module>visual-push</module>
         <module>visual-cms</module>
         <module>passjava-common</module>
-        <module>passjava-jwt</module>
     </modules>
 </project>
