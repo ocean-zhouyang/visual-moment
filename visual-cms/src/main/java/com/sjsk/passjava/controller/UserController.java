@@ -14,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * <p>
@@ -51,11 +51,13 @@ public class UserController {
     @PostMapping("regist")
     public Object regist(@Validated @RequestBody UserDto userDto) {
 
-        User user = new User();
+        User user = userService.lambdaQuery().eq(User::getMobile, userDto.getMobile()).one();
+        Optional.ofNullable(user).ifPresent(u -> {
+            throw new RuntimeException("用户已存在");
+        });
+
+        user = new User();
         BeanUtils.copyProperties(userDto, user);
-        if (!StringUtils.hasLength(user.getUserName()) || !StringUtils.hasLength(user.getPassword())) {
-            return R.error("用户名或密码不能为空");
-        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.save(user);
         return R.ok().put("user", user);
@@ -68,10 +70,6 @@ public class UserController {
         String userId = loginDto.getUserId();
         String password = loginDto.getPassword();
 
-        // 如果用户名和密码为空
-        if (!StringUtils.hasLength(userId) || !StringUtils.hasLength(password)) {
-            return R.error(ResponseCodeEnum.LOGIN_ERROR.getCode(), ResponseCodeEnum.LOGIN_ERROR.getMessage());
-        }
         // 根据 userId 去数据库查找该用户
         User user = userService.getById(userId);
         if (Objects.nonNull(user)) {

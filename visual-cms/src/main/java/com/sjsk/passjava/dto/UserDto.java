@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Data
@@ -33,6 +35,8 @@ public class UserDto implements Serializable {
     /**
      * 电话
      */
+    @Pattern(regexp = "^1[3456789]\\d{9}$", message = "手机号格式错误")
+    @NotBlank(message = "手机号不能为空")
     private String mobile;
 
 }
