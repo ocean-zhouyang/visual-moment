@@ -2,9 +2,8 @@ package com.sjsk.passjava.member.controller;
 
 import com.sjsk.passjava.common.utils.PageUtils;
 import com.sjsk.passjava.common.utils.R;
-import com.sjsk.passjava.common.utils.SecurityUtils;
-import com.sjsk.passjava.common.utils.ServletUtils;
-import com.jackson0714.passjava.jwt.utils.PassJavaJwtTokenUtil;
+//import com.sjsk.passjava.common.utils.SecurityUtils;
+//import com.sjsk.passjava.common.utils.ServletUtils;
 import com.sjsk.passjava.member.entity.MemberEntity;
 import com.sjsk.passjava.member.feign.StudyTimeFeignService;
 import com.sjsk.passjava.member.service.MemberService;
@@ -28,8 +27,6 @@ import java.util.Map;
 @RequestMapping("member/member")
 public class MemberController {
 
-    @Resource
-    private PassJavaJwtTokenUtil jwtTokenUtil;
 
     @Autowired
     private MemberService memberService;
@@ -41,7 +38,7 @@ public class MemberController {
      * 通过网关拿到 token 中的 userId，然后根据 userId 查询用户信息
      * @return
      */
-    @RequestMapping("/userinfo")
+    /*@RequestMapping("/userinfo")
     public R info(){
         // 方式一: 从 request 里面，推荐方式二
         HttpServletRequest request = ServletUtils.getRequest();
@@ -52,7 +49,7 @@ public class MemberController {
         MemberEntity member = memberService.getMemberByUserId(userId2);
 
         return R.ok().put("member", member);
-    }
+    }*/
 
     @RequestMapping("/studytime/list/test/{id}")
     public R getMemberStudyTimeListTest(@PathVariable("id") Long id) {

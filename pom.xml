@@ -12,8 +12,8 @@
     <!-- 添加子模块 -->
     <modules>
         <module>passjava-content</module>
+        <module>passjava-common</module>
         <module>visual-push</module>
         <module>visual-cms</module>
-        <module>passjava-common</module>
     </modules>
 </project>
